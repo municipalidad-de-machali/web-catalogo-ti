@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <script src="script.js"></script>
+
+    <div id="header-placeholder"></div>
+    
+<div class="main-content">
+
+<div id="serviceModal" class="modal-overlay">
+  <div class="modal-content">
+    
+    <span class="close-btn">&times;</span>
+
+    <section class="catalogo-box">
+    <div class="menu-servicios">
+        <h2 class="titulo-seccion">Servicios</h2>
+        <button class="btn-servicio" onclick="cambiarInfo('modmail')">Modificacion de correos intitucionales</button>
+        <button class="btn-servicio" onclick="cambiarInfo('form')">Soporte en la creacion de Formularios de Google</button>
+        <button class="btn-servicio" onclick="cambiarInfo('drive')">Google Drive</button>
+        <button class="btn-servicio" onclick="cambiarInfo('gmail')">Correo Electronico</button>
+        <button class="btn-servicio" onclick="cambiarInfo('date')">Calendario Gmail</button>
+        <button class="btn-servicio" onclick="cambiarInfo('meet')">Google MEET</button>
+    </div>
+
+    <div class="detalle-servicio" id="cuadro-detalle">
+        <h2 id="info-titulo">Workspace</h2>
+        <p id="info-texto">Selecciona un servicio de la izquierda para ver los detalles.</p>
+        <button class="btn-solicitar">Enviar Solicitud</button>
+    </div>
+</section>
+    
+
+  </div>
+</div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+</body>
+
+</html>
