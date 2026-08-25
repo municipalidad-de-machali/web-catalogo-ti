@@ -8,6 +8,12 @@
 
 }
 
+*,
+*::before,
+*::after{
+box-sizing:border-box;
+}
+
 
 /* FONDO DE LA PAGINA */
 
@@ -79,9 +85,6 @@ align-self:center;
 position: relative;
 }
 
-
-/* BOTONES */
-
 .card-boton{
 
 width: 250px;
@@ -110,9 +113,12 @@ border-color: white;
 }
 
 .card-boton:nth-child(odd) span {
-    padding-top: 10px; /* Ajusta el texto hacia la base */
-    align-self: flex-end;
-    line-height: 0.9;
+    position: absolute;
+    bottom: 24px;
+    width: 76%;
+    font-size: 1.55rem;
+    line-height: 1.05;
+    overflow-wrap: break-word;
 }
 
 .card-boton:nth-child(even) {
@@ -120,9 +126,12 @@ border-color: white;
     z-index: 2;
 }
 .card-boton:nth-child(even) span{
-    padding-top: 10px; /* Ajusta el texto hacia la base */
-    align-self: flex-start;
-    line-height: 0.9;
+    position: absolute;
+    top: 24px;
+    width: 76%;
+    font-size: 1.55rem;
+    line-height: 1.05;
+    overflow-wrap: break-word;
 }
 
 .card-boton:hover {
@@ -161,10 +170,14 @@ font-size: 20px;
 font-weight: bold;
 text-align:center;
 color: white;
-padding:10px;
+padding:18px 10px;
 background:var(--rojo);
-margin-top:30px;
+margin-top:0;
 width: 100%;
+}
+
+footer p{
+margin:0;
 }
 
 .main-content {
