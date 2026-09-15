@@ -70,6 +70,140 @@ const datosServicios = {
 
 };
 
+// Íconos visuales para identificar rápidamente cada servicio del catálogo.
+const iconosServicios = {
+    red: '🛜',
+    conred: '🌐',
+    manred: '🔌',
+    insimp: '🖨️',
+    consimp: '🧃',
+    confimp: '⚙️',
+    mantimp: '🔧',
+    conftel: '☎️',
+    anxtel: '🔢',
+    mantel: '🛠️',
+    codetel: '📞',
+    ad: '👤',
+    firmail: '✉️',
+    firmelec: '✍️',
+    gestacnta: '🔒',
+    gespass: '🔑',
+    manpc: '💻',
+    recup: '💾',
+    propc: '🖥️',
+    geshar: '🧩',
+    diagpc: '🩺',
+    consoft: '🧰',
+    evapc: '🔍',
+    ases: '💡',
+    capa: '🎓',
+    cothdw: '📋',
+    gmail: '📧',
+    ggl: '🗂️',
+    drive: '☁️',
+    '?': '🏛️'
+};
+
+// Categorías disponibles en catálogo y las claves de sus servicios en datosServicios.
+const categoriasServicios = {
+    redes: {
+        titulo: 'Internet y Redes',
+        descripcion: 'Servicios para mantener la conectividad y la infraestructura de red municipal.',
+        servicios: ['red', 'conred', 'manred']
+    },
+    impresion: {
+        titulo: 'Servicio de impresión',
+        descripcion: 'Servicios de instalación, configuración, mantención y suministros para equipos de impresión.',
+        servicios: ['insimp', 'consimp', 'confimp', 'mantimp']
+    },
+    sistemas: {
+        titulo: 'Sistemas Municipales',
+        descripcion: 'Servicios de apoyo para los sistemas utilizados por la Municipalidad.',
+        servicios: ['?']
+    },
+    identidad: {
+        titulo: 'Gestión de identidad',
+        descripcion: 'Servicios asociados a cuentas, accesos, contraseñas y firmas institucionales.',
+        servicios: ['ad', 'firmail', 'firmelec', 'gestacnta', 'gespass']
+    },
+    continuidad: {
+        titulo: 'Continuidad Operacional',
+        descripcion: 'Servicios para asegurar la disponibilidad y el correcto funcionamiento de los equipos y aplicaciones.',
+        servicios: ['manpc', 'recup', 'propc', 'geshar', 'diagpc', 'consoft']
+    },
+    asesoria: {
+        titulo: 'Asesoría técnica',
+        descripcion: 'Servicios de evaluación, orientación, capacitación y apoyo técnico especializado.',
+        servicios: ['evapc', 'ases', 'capa', 'cothdw']
+    },
+    workspace: {
+        titulo: 'Google Workspace',
+        descripcion: 'Servicios de administración y soporte para las herramientas de Google Workspace.',
+        servicios: ['gmail', 'ggl', 'drive']
+    },
+    telefonia: {
+        titulo: 'Telefonía',
+        descripcion: 'Servicios de instalación, configuración y soporte para la telefonía IP municipal.',
+        servicios: ['conftel', 'anxtel', 'mantel', 'codetel']
+    }
+};
+
+function cargarCatalogo() {
+    const titulo = document.getElementById('categoria-titulo');
+    const descripcion = document.getElementById('categoria-descripcion');
+    const lista = document.getElementById('servicios-lista');
+
+    // La presencia de estos elementos indica que se está visualizando catalogo.html.
+    if (!titulo || !descripcion || !lista) return;
+
+    const claveCategoria = new URLSearchParams(window.location.search).get('categoria');
+    const categoria = categoriasServicios[claveCategoria];
+
+    if (!categoria) {
+        titulo.textContent = 'Categoría no encontrada';
+        descripcion.textContent = 'Selecciona una categoría desde el catálogo principal.';
+        return;
+    }
+
+    document.title = `${categoria.titulo} | Catálogo TI`;
+    titulo.textContent = categoria.titulo;
+    descripcion.textContent = categoria.descripcion;
+
+    categoria.servicios.forEach(claveServicio => {
+        const servicio = datosServicios[claveServicio];
+        if (!servicio) return;
+
+        const columna = document.createElement('div');
+        columna.className = 'col-12 col-md-4 d-flex';
+
+        const tarjeta = document.createElement('article');
+        tarjeta.className = 'card card-border-primary mb-2 text-mach-primary';
+
+        const cuerpo = document.createElement('div');
+        cuerpo.className = 'card-body';
+
+        const nombre = document.createElement('h4');
+        nombre.className = 'card-title fw-bold';
+        nombre.textContent = `${iconosServicios[claveServicio] || '🛎️'} ${servicio.t}`;
+
+        const detalle = document.createElement('p');
+        detalle.className = 'card-text';
+        detalle.textContent = servicio.d;
+
+        const solicitud = document.createElement('a');
+        solicitud.className = 'btn btn-danger float-end';
+        solicitud.href = 'https://machali.freshdesk.com/support/tickets/new';
+        solicitud.textContent = 'Enviar solicitud';
+
+        cuerpo.append(nombre, detalle, solicitud);
+        tarjeta.appendChild(cuerpo);
+        columna.appendChild(tarjeta);
+        lista.appendChild(columna);
+    });
+}
+
+cargarCatalogo();
+
 function cambiarInfo(clave) {
     // 1. Actualizar el contenido de texto
     const titulo = document.getElementById('info-titulo');

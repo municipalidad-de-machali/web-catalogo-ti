@@ -1,47 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workspace</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
 
-<body>
+<body class="d-flex flex-column min-vh-100">
+    <header id="header-placeholder"></header>
+
+        <main class="flex-grow-1">
+        <div>
+            <div class="modal-content">
+                <section class="catalogo-box">
+                    <div class="menu-servicios card bg-transparent border-0">
+                        <div class="card-body p-0 d-flex flex-column gap-2">
+                            <h2 class="card-title">Servicios</h2>
+                            <button class="btn-servicio" onclick="cambiarInfo('gmail')">Administracion de correos institucionales</button>
+                            <button class="btn-servicio" onclick="cambiarInfo('ggl')">Asistencia con servicios de Google Workspace</button>
+                            <button class="btn-servicio" onclick="cambiarInfo('drive')">Gestion de datos en Google Drive</button>
+                        </div>
+                    </div>
+
+                    <div class="detalle-servicio card bg-transparent border-0">
+                        <div class="card-body p-0 d-flex flex-column justify-content-between h-100">
+                            <div>
+                                <h2 id="info-titulo" class="card-title">Workspace</h2>
+                                <p id="info-texto" class="card-text">Selecciona un servicio de la izquierda para ver los detalles.</p>
+                            </div>
+                            <div>
+                                <button class="btn-solicitar">Enviar Solicitud</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <h6 class="text-center">
+        ¿Tienes alguna sugerencia? <a href="https://forms.gle/BHX9s6LA7ofZktKx9">Escríbenos aquí</a> 
+    </h6>
+    <footer id="footer-placeholder" class="py-4 bg-mach-primary text-white"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-
-    <div id="header-placeholder"></div>
-    
-<div class="main-content">
-
-<div id="serviceModal" class="modal-overlay">
-  <div class="modal-content">
-    
-    <span class="close-btn">&times;</span>
-
-    <section class="catalogo-box">
-    <div class="menu-servicios">
-        <h2 class="titulo-seccion">Servicios</h2>
-        <button class="btn-servicio" onclick="cambiarInfo('gmail')">Administracion de correos institucionales</button>
-        <button class="btn-servicio" onclick="cambiarInfo('ggl')">Asistencia con servicios de Google Workspace</button>
-        <button class="btn-servicio" onclick="cambiarInfo('drive')">Gestion de datos en Google Drive</button>
-    </div>
-
-    <div class="detalle-servicio" id="cuadro-detalle">
-        <h2 id="info-titulo">Workspace</h2>
-        <p id="info-texto">Selecciona un servicio de la izquierda para ver los detalles.</p>
-        <button class="btn-solicitar">Enviar Solicitud</button>
-    </div>
-</section>
-    
-
-  </div>
-</div>
-</div>
-
-<div id="footer-placeholder"></div>
-
 </body>
 
 </html>
