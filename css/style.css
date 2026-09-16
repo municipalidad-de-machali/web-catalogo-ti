@@ -7,7 +7,7 @@
 
 body {
     font-family: var(--bs-body-font-family);
-    background: linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), url("images/machali.jpg") center / cover fixed no-repeat;
+    background: linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), url("/images/machali.jpg") center / cover fixed no-repeat;
 }
 
 .bg-mach-primary { background-color: #008aad; }
@@ -100,13 +100,21 @@ body {
     margin: 0 !important;
 }
 
+.card-servicio-catalogo {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.card-servicio-catalogo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 138, 173, 0.2) !important;
+}
+
 #servicios-lista .card-body {
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
 }
-
-#servicios-lista .btn { margin-top: auto; }
 
 .btn-servicio {
     padding: 14px;
