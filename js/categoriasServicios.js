@@ -12,7 +12,7 @@ const categoriasServicios = {
     sistemas: {
         titulo: 'Sistemas Municipales',
         descripcion: 'Servicios de apoyo para los sistemas utilizados por la Municipalidad.',
-        servicios: ['?']
+        servicios: ['sgd-especificos', 'sgd-soporte-erp']
     },
     identidad: {
         titulo: 'Gestión de identidad',

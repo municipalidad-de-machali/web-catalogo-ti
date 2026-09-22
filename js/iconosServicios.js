@@ -28,5 +28,7 @@ const iconosServicios = {
     gmail: '📧',
     ggl: '🗂️',
     drive: '☁️',
-    '?': '🏛️'
+    'sgd-soporte-erp': '🔩',
+    'sgd-especificos': '🗃️',
+    '?': '🏛️',
 };

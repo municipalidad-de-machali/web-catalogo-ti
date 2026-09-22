@@ -123,9 +123,13 @@ const datosServicios = {
         d: 'Servicio específicamente enfocado en asistir con el uso de Google Drive, la organización de directorios usando la aplicación de escritorio y su sincronización.'
     },
     /* SISTEMAS MUNICIPALES */
-    '?': { 
-        t: 'Falta', 
-        d: 'Falta este ítem.'
-    }
+    'sgd-especificos': { 
+        t: 'Soporte especifico de plataformas SISREC, MonitoWeb, Reloj control, Etc.', 
+        d: 'Servicio que da soporte específico para las plataformas SISREC, Monitoweb, Reloj Control, entre otros. Consiste en la resolucion de problemas relacionados a dichos sistemas cada vez que se solicite su asistencia.'
+    },
+    'sgd-soporte-erp': {
+        t: 'Soporte de servicios municipales en plataforma ERP',
+        d: 'Servicio de soporte para solicitudes e incidentes relacionados a la plataforma ERP y sus sistemas: Giradores, Finanzas, etc.'
+    },
 };
 
