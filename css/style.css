@@ -102,7 +102,8 @@ body {
     padding-right: 1.5rem;
 }
 
-.card-servicio-catalogo {
+.card-servicio-catalogo,
+.card-service {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -114,12 +115,14 @@ body {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.card-servicio-catalogo:hover {
+.card-servicio-catalogo:hover,
+.card-service:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12) !important;
 }
 
-.card-servicio-catalogo .card-body {
+.card-servicio-catalogo .card-body,
+.card-service .card-body {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -156,7 +159,8 @@ body {
     border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.btn-ver-detalle {
+.btn-ver-detalle,
+.btn-view-detail {
     color: var(--cat-color, #008aad);
     border: 1.5px solid var(--cat-color, #008aad);
     background-color: transparent;
@@ -168,7 +172,9 @@ body {
 }
 
 .btn-ver-detalle:hover,
-.card-servicio-catalogo:hover .btn-ver-detalle {
+.btn-view-detail:hover,
+.card-servicio-catalogo:hover .btn-ver-detalle,
+.card-service:hover .btn-view-detail {
     background-color: var(--cat-color, #008aad);
     color: #ffffff !important;
 }
@@ -206,7 +212,8 @@ body {
     justify-content: center;
 }
 
-.btn-cat-pill {
+.btn-cat-pill,
+.category-pill {
     font-size: 0.85rem;
     font-weight: 600;
     border-radius: 20px;
@@ -219,25 +226,29 @@ body {
     text-decoration: none;
 }
 
-.btn-cat-pill:hover {
+.btn-cat-pill:hover,
+.category-pill:hover {
     background: #f1f5f9;
     border-color: #94a3b8;
     color: #1e293b;
 }
 
-.btn-cat-pill.active {
+.btn-cat-pill.active,
+.category-pill.active {
     background: #008aad;
     color: #ffffff;
     border-color: #008aad;
 }
 
 /* Secciones de categorías */
-.categoria-seccion {
+.categoria-seccion,
+.category-section {
     margin-bottom: 3.5rem;
     scroll-margin-top: 20px;
 }
 
-.categoria-header {
+.categoria-header,
+.category-header {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -246,7 +257,8 @@ body {
     border-bottom: 2px solid rgba(0, 0, 0, 0.08);
 }
 
-.categoria-icono-circulo {
+.categoria-icono-circulo,
+.category-icon-circle {
     width: 50px;
     height: 50px;
     border-radius: 12px;

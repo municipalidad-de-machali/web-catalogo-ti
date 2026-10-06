@@ -11,7 +11,6 @@
 <body class="d-flex flex-column min-vh-100">
     <header id="header-placeholder"></header>
 
-    <!-- Encabezado Principal / Hero -->
     <div class="container-fluid bg-mach-primary text-white py-5 shadow-sm">
         <div class="container text-center">
             <h1 class="fw-bold display-5 mb-2">Catálogo de Servicios TI</h1>
@@ -21,64 +20,777 @@
         </div> 
     </div>
 
-    <!-- Barra de Búsqueda y Filtros -->
     <section class="container mt-4 mb-4">
         <div class="search-container">
             <div class="search-box-wrapper p-2 d-flex align-items-center">
                 <span class="ps-3 pe-2 text-muted fs-5" aria-hidden="true">🔍</span>
-                <input type="search" id="buscador-servicios" class="form-control search-input" placeholder="Buscar servicio por nombre, descripción o categoría (ej. wifi, impresora, correo, firma...)" aria-label="Buscar servicio TI">
-                <button type="button" id="btn-limpiar-busqueda" class="btn btn-link text-muted pe-3 text-decoration-none d-none" aria-label="Limpiar búsqueda" title="Limpiar búsqueda">✕</button>
+                <input type="search" id="service-search" class="form-control search-input" placeholder="Buscar servicio por nombre, descripción o categoría (ej. wifi, impresora, correo, firma...)" aria-label="Buscar servicio TI">
+                <button type="button" id="clear-search-btn" class="btn btn-link text-muted pe-3 text-decoration-none d-none" aria-label="Limpiar búsqueda" title="Limpiar búsqueda">✕</button>
             </div>
 
-            <!-- Botones tipo Pill de categorías -->
-            <div class="search-pills mt-3" id="filtros-categoria" role="group" aria-label="Filtro de categorías"></div>
+            <div class="search-pills mt-3" id="category-filters" role="group" aria-label="Filtro de categorías">
+                <button type="button" class="btn-cat-pill active" data-category="all">🌟 Todos los servicios</button>
+                <button type="button" class="btn-cat-pill" data-category="asesoria-tecnica"><span>💡</span> Asesoría Técnica</button>
+                <button type="button" class="btn-cat-pill" data-category="equipamiento-hardware"><span>🖥️</span> Equipamiento y hardware</button>
+                <button type="button" class="btn-cat-pill" data-category="gestion-identidad"><span>👤</span> Gestión de Identidad</button>
+                <button type="button" class="btn-cat-pill" data-category="internet-redes"><span>🌐</span> Internet y Redes</button>
+                <button type="button" class="btn-cat-pill" data-category="respaldos-almacenamiento"><span>💾</span> Respaldos y almacenamiento</button>
+                <button type="button" class="btn-cat-pill" data-category="servicio-impresion"><span>🖨️</span> Servicio de Impresión</button>
+                <button type="button" class="btn-cat-pill" data-category="sistemas-municipales"><span>🏛️</span> Sistemas Municipales</button>
+                <button type="button" class="btn-cat-pill" data-category="software-ofimatica"><span>📦</span> Software y Ofimática</button>
+                <button type="button" class="btn-cat-pill" data-category="telefonia"><span>📞</span> Telefonía</button>
+            </div>
 
-            <!-- Contador de resultados -->
-            <div id="contador-resultados" class="text-center text-muted fw-semibold small mt-2 d-none" aria-live="polite"></div>
+            <div id="results-count" class="text-center text-muted fw-semibold small mt-2 d-none" aria-live="polite"></div>
         </div>
     </section>
 
-    <!-- Contenido Principal: Todos los servicios agrupados por categoría -->
     <main class="flex-grow-1">
         <div class="container my-3" id="catalogo-completo">
-            <!-- Las categorías y tarjetas de servicio se generan dinámicamente aquí -->
+        <!-- Category: Asesoría Técnica -->
+        <section class="categoria-seccion" id="cat-asesoria-tecnica" data-category="asesoria-tecnica">
+            <div class="categoria-header">
+                <div class="categoria-icono-circulo" style="background-color: #0891b2; color: #ffffff;">
+                    💡
+                </div>
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h3 class="fw-bold m-0" style="color: #0891b2; font-size: 1.5rem;">Asesoría Técnica</h3>
+                        <span class="badge rounded-pill" style="background-color: #cffafe; color: #0891b2; border: 1px solid #0891b240; font-size: 0.8rem;">
+                            2 servicios
+                        </span>
+                    </div>
+                    <p class="text-secondary small m-0 mt-1">Servicios de asesoría, levantamiento de requerimientos y orientación técnica para las direcciones municipales.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="asesoria-tecnica"
+                     data-search="asesoria tecnica general servicio que consiste en asesorar u orientar a funcionarios sobre temas relacionados con el area de la informatica cada vez que se solicite mediante un ticket o por llamada telefonica. considera ayuda en el uso de google workspace. asesoria tecnica servicios de asesoria, levantamiento de requerimientos y orientacion tecnica para las direcciones municipales.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #0891b2; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Asesoría técnica general"
+                             data-service-icon="💡"
+                             data-service-category="💡 Asesoría Técnica"
+                             data-service-category-color="#0891b2"
+                             data-service-category-bg="#cffafe"
+                             data-service-description="Servicio que consiste en asesorar u orientar a funcionarios sobre temas relacionados con el área de la informática cada vez que se solicite mediante un ticket o por llamada telefónica. Considera ayuda en el uso de Google Workspace.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">💡</span>
+                                <span class="badge rounded-pill" style="background-color: #cffafe; color: #0891b2; border: 1px solid #0891b230; font-size: 0.72rem;">
+                                    💡 Asesoría Técnica
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Asesoría técnica general</h5>
+                            <p class="service-card-desc">Servicio que consiste en asesorar u orientar a funcionarios sobre temas relacionados con el...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #0891b2;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="asesoria-tecnica"
+                     data-search="solicitud de especificaciones tecnicas para la adquisicion de equipamiento o servicios informaticos servicio de asesoria y levantamiento de requerimientos tecnicos para la elaboracion de fichas de especificaciones, cotizaciones y terminos de referencia para la adquisicion de hardware, software o servicios de ti ajustados al presupuesto y necesidades de cada direccion municipal. asesoria tecnica servicios de asesoria, levantamiento de requerimientos y orientacion tecnica para las direcciones municipales.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #0891b2; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Solicitud de especificaciones técnicas para la adquisición de equipamiento o servicios informáticos"
+                             data-service-icon="📋"
+                             data-service-category="💡 Asesoría Técnica"
+                             data-service-category-color="#0891b2"
+                             data-service-category-bg="#cffafe"
+                             data-service-description="Servicio de asesoría y levantamiento de requerimientos técnicos para la elaboración de fichas de especificaciones, cotizaciones y términos de referencia para la adquisición de hardware, software o servicios de TI ajustados al presupuesto y necesidades de cada dirección municipal.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">📋</span>
+                                <span class="badge rounded-pill" style="background-color: #cffafe; color: #0891b2; border: 1px solid #0891b230; font-size: 0.72rem;">
+                                    💡 Asesoría Técnica
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Solicitud de especificaciones técnicas para la adquisición de equipamiento o servicios informáticos</h5>
+                            <p class="service-card-desc">Servicio de asesoría y levantamiento de requerimientos técnicos para la elaboración de fichas de...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #0891b2;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Category: Equipamiento y hardware -->
+        <section class="categoria-seccion" id="cat-equipamiento-hardware" data-category="equipamiento-hardware">
+            <div class="categoria-header">
+                <div class="categoria-icono-circulo" style="background-color: #e11d48; color: #ffffff;">
+                    🖥️
+                </div>
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h3 class="fw-bold m-0" style="color: #e11d48; font-size: 1.5rem;">Equipamiento y hardware</h3>
+                        <span class="badge rounded-pill" style="background-color: #ffe4e6; color: #e11d48; border: 1px solid #e11d4840; font-size: 0.8rem;">
+                            2 servicios
+                        </span>
+                    </div>
+                    <p class="text-secondary small m-0 mt-1">Provisión, configuración y entrega de equipamiento computacional, periféricos y accesorios.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="equipamiento-hardware"
+                     data-search="provisionamiento y gestion de equipos computacionales servicio enfocado en la gestion integral para la entrega de equipamiento informatico a los funcionarios. el proceso abarca la preparacion y configuracion inicial del hardware (computadores de escritorio y laptops), asegurando su correcto funcionamiento en la red corporativa. asimismo, contempla la carga de aplicaciones basicas institucionales y la instalacion de software especifico requerido segun el perfil y funciones del usuario, culminando con la entrega fisica y puesta en marcha del equipo en el puesto de trabajo. equipamiento y hardware provision, configuracion y entrega de equipamiento computacional, perifericos y accesorios.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #e11d48; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Provisionamiento y gestión de equipos computacionales"
+                             data-service-icon="💻"
+                             data-service-category="🖥️ Equipamiento y hardware"
+                             data-service-category-color="#e11d48"
+                             data-service-category-bg="#ffe4e6"
+                             data-service-description="Servicio enfocado en la gestión integral para la entrega de equipamiento informático a los funcionarios. El proceso abarca la preparación y configuración inicial del hardware (computadores de escritorio y laptops), asegurando su correcto funcionamiento en la red corporativa. Asimismo, contempla la carga de aplicaciones básicas institucionales y la instalación de software específico requerido según el perfil y funciones del usuario, culminando con la entrega física y puesta en marcha del equipo en el puesto de trabajo.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">💻</span>
+                                <span class="badge rounded-pill" style="background-color: #ffe4e6; color: #e11d48; border: 1px solid #e11d4830; font-size: 0.72rem;">
+                                    🖥️ Equipamiento y hardware
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Provisionamiento y gestión de equipos computacionales</h5>
+                            <p class="service-card-desc">Servicio enfocado en la gestión integral para la entrega de equipamiento informático a los...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #e11d48;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="equipamiento-hardware"
+                     data-search="provisionamiento y gestion de perifericos servicio enfocado en la provision, prueba, entrega y reemplazo de perifericos y accesorios de hardware no computacionales (teclados, mouses, monitores, auriculares, adaptadores usb/hdmi, camaras web y proyectores), asegurando la usabilidad del puesto de trabajo. equipamiento y hardware provision, configuracion y entrega de equipamiento computacional, perifericos y accesorios.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #e11d48; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Provisionamiento y gestión de periféricos"
+                             data-service-icon="⌨️"
+                             data-service-category="🖥️ Equipamiento y hardware"
+                             data-service-category-color="#e11d48"
+                             data-service-category-bg="#ffe4e6"
+                             data-service-description="Servicio enfocado en la provisión, prueba, entrega y reemplazo de periféricos y accesorios de hardware no computacionales (teclados, mouses, monitores, auriculares, adaptadores USB/HDMI, cámaras web y proyectores), asegurando la usabilidad del puesto de trabajo.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">⌨️</span>
+                                <span class="badge rounded-pill" style="background-color: #ffe4e6; color: #e11d48; border: 1px solid #e11d4830; font-size: 0.72rem;">
+                                    🖥️ Equipamiento y hardware
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Provisionamiento y gestión de periféricos</h5>
+                            <p class="service-card-desc">Servicio enfocado en la provisión, prueba, entrega y reemplazo de periféricos y accesorios de...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #e11d48;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Category: Gestión de Identidad -->
+        <section class="categoria-seccion" id="cat-gestion-identidad" data-category="gestion-identidad">
+            <div class="categoria-header">
+                <div class="categoria-icono-circulo" style="background-color: #059669; color: #ffffff;">
+                    👤
+                </div>
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h3 class="fw-bold m-0" style="color: #059669; font-size: 1.5rem;">Gestión de Identidad</h3>
+                        <span class="badge rounded-pill" style="background-color: #d1fae5; color: #059669; border: 1px solid #05966940; font-size: 0.8rem;">
+                            4 servicios
+                        </span>
+                    </div>
+                    <p class="text-secondary small m-0 mt-1">Administración de cuentas de usuario, bajas, firmas de correo y firmas electrónicas institucionales.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="gestion-identidad"
+                     data-search="creacion de cuentas para usuarios nuevos servicio que se encarga de proveerles a los funcionarios sus respectivas cuentas para los sistemas municipales, tales como la plataforma erp, generar una cuenta dentro de active directory municipal, ingresar una cuenta de microsoft 365 en su equipo asignado, etc. gestion de identidad administracion de cuentas de usuario, bajas, firmas de correo y firmas electronicas institucionales.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #059669; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Creación de cuentas para usuarios nuevos"
+                             data-service-icon="👤"
+                             data-service-category="👤 Gestión de Identidad"
+                             data-service-category-color="#059669"
+                             data-service-category-bg="#d1fae5"
+                             data-service-description="Servicio que se encarga de proveerles a los funcionarios sus respectivas cuentas para los sistemas municipales, tales como la plataforma ERP, generar una cuenta dentro de Active Directory municipal, ingresar una cuenta de Microsoft 365 en su equipo asignado, etc.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">👤</span>
+                                <span class="badge rounded-pill" style="background-color: #d1fae5; color: #059669; border: 1px solid #05966930; font-size: 0.72rem;">
+                                    👤 Gestión de Identidad
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Creación de cuentas para usuarios nuevos</h5>
+                            <p class="service-card-desc">Servicio que se encarga de proveerles a los funcionarios sus respectivas cuentas para los...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #059669;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="gestion-identidad"
+                     data-search="eliminacion de cuentas ante baja de usuario servicio focalizado en llevar un correcto procedimiento administrativo al momento de solicitar la baja de un usuario, respaldar su correo institucional y suspenderlo posteriormente, eliminar su cuenta de active directory, suspender su acceso total a la plataforma erp, entre otras credenciales asociadas. gestion de identidad administracion de cuentas de usuario, bajas, firmas de correo y firmas electronicas institucionales.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #059669; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Eliminación de cuentas ante baja de usuario"
+                             data-service-icon="🔒"
+                             data-service-category="👤 Gestión de Identidad"
+                             data-service-category-color="#059669"
+                             data-service-category-bg="#d1fae5"
+                             data-service-description="Servicio focalizado en llevar un correcto procedimiento administrativo al momento de solicitar la baja de un usuario, respaldar su correo institucional y suspenderlo posteriormente, eliminar su cuenta de Active Directory, suspender su acceso total a la plataforma ERP, entre otras credenciales asociadas.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">🔒</span>
+                                <span class="badge rounded-pill" style="background-color: #d1fae5; color: #059669; border: 1px solid #05966930; font-size: 0.72rem;">
+                                    👤 Gestión de Identidad
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Eliminación de cuentas ante baja de usuario</h5>
+                            <p class="service-card-desc">Servicio focalizado en llevar un correcto procedimiento administrativo al momento de solicitar la baja...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #059669;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="gestion-identidad"
+                     data-search="administracion de firmas de correo electronico servicio enfocado en proveer de un pie de firma estandarizado para cada correo institucional dentro de la municipalidad, el cual debera llevar los datos de cada funcionario, incluyendo su nombre y apellido, cargo al que pertenece, direccion a la que pertenece, edificio en el cual trabaja y su respectivo anexo telefonico en caso de disponer de uno. ademas de poder realizar correcciones o cambios en caso de que alguna firma presente un error en su informacion o cuando sea necesario atribuirle dicha firma a un nuevo funcionario. gestion de identidad administracion de cuentas de usuario, bajas, firmas de correo y firmas electronicas institucionales.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #059669; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Administración de firmas de correo electrónico"
+                             data-service-icon="✉️"
+                             data-service-category="👤 Gestión de Identidad"
+                             data-service-category-color="#059669"
+                             data-service-category-bg="#d1fae5"
+                             data-service-description="Servicio enfocado en proveer de un pie de firma estandarizado para cada correo institucional dentro de la municipalidad, el cual deberá llevar los datos de cada funcionario, incluyendo su nombre y apellido, cargo al que pertenece, dirección a la que pertenece, edificio en el cual trabaja y su respectivo anexo telefónico en caso de disponer de uno. Además de poder realizar correcciones o cambios en caso de que alguna firma presente un error en su información o cuando sea necesario atribuirle dicha firma a un nuevo funcionario.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">✉️</span>
+                                <span class="badge rounded-pill" style="background-color: #d1fae5; color: #059669; border: 1px solid #05966930; font-size: 0.72rem;">
+                                    👤 Gestión de Identidad
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Administración de firmas de correo electrónico</h5>
+                            <p class="service-card-desc">Servicio enfocado en proveer de un pie de firma estandarizado para cada correo institucional...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #059669;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="gestion-identidad"
+                     data-search="gestion de firma electronica servicio encargado de disponer para los funcionarios de una firma electronica, la cual sirve para autenticar documentos digitales y firmar acuerdos online con la misma validez legal que una firma manuscrita, pero de forma mas rapida, segura y sin papel. consiste en realizar la instalacion de dicha firma en el equipo del funcionario designado. tambien se encarga de disponer soluciones en caso de que la firma presente alguna falla. gestion de identidad administracion de cuentas de usuario, bajas, firmas de correo y firmas electronicas institucionales.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #059669; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Gestión de firma electrónica"
+                             data-service-icon="✍️"
+                             data-service-category="👤 Gestión de Identidad"
+                             data-service-category-color="#059669"
+                             data-service-category-bg="#d1fae5"
+                             data-service-description="Servicio encargado de disponer para los funcionarios de una firma electrónica, la cual sirve para autenticar documentos digitales y firmar acuerdos online con la misma validez legal que una firma manuscrita, pero de forma más rápida, segura y sin papel. Consiste en realizar la instalación de dicha firma en el equipo del funcionario designado. También se encarga de disponer soluciones en caso de que la firma presente alguna falla.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">✍️</span>
+                                <span class="badge rounded-pill" style="background-color: #d1fae5; color: #059669; border: 1px solid #05966930; font-size: 0.72rem;">
+                                    👤 Gestión de Identidad
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Gestión de firma electrónica</h5>
+                            <p class="service-card-desc">Servicio encargado de disponer para los funcionarios de una firma electrónica, la cual sirve...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #059669;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Category: Internet y Redes -->
+        <section class="categoria-seccion" id="cat-internet-redes" data-category="internet-redes">
+            <div class="categoria-header">
+                <div class="categoria-icono-circulo" style="background-color: #0284c7; color: #ffffff;">
+                    🌐
+                </div>
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h3 class="fw-bold m-0" style="color: #0284c7; font-size: 1.5rem;">Internet y Redes</h3>
+                        <span class="badge rounded-pill" style="background-color: #e0f2fe; color: #0284c7; border: 1px solid #0284c740; font-size: 0.8rem;">
+                            2 servicios
+                        </span>
+                    </div>
+                    <p class="text-secondary small m-0 mt-1">Instalación, configuración y continuidad operacional de la conectividad y redes municipales.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="internet-redes"
+                     data-search="instalacion y gestion de equipos de red servicio que consiste en la instalacion y posterior configuracion de equipos de red, tales como routers y switches, en los puestos de trabajo de los funcionarios. el servicio se asegura de mantener a los trabajadores conectados a la red municipal, cubriendo todas sus dependencias. internet y redes instalacion, configuracion y continuidad operacional de la conectividad y redes municipales.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #0284c7; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Instalación y gestión de equipos de red"
+                             data-service-icon="🔌"
+                             data-service-category="🌐 Internet y Redes"
+                             data-service-category-color="#0284c7"
+                             data-service-category-bg="#e0f2fe"
+                             data-service-description="Servicio que consiste en la instalación y posterior configuración de equipos de red, tales como routers y switches, en los puestos de trabajo de los funcionarios. El servicio se asegura de mantener a los trabajadores conectados a la red municipal, cubriendo todas sus dependencias.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">🔌</span>
+                                <span class="badge rounded-pill" style="background-color: #e0f2fe; color: #0284c7; border: 1px solid #0284c730; font-size: 0.72rem;">
+                                    🌐 Internet y Redes
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Instalación y gestión de equipos de red</h5>
+                            <p class="service-card-desc">Servicio que consiste en la instalación y posterior configuración de equipos de red, tales...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #0284c7;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="internet-redes"
+                     data-search="continuidad operacional del servicio de internet servicio enfocado en proveer y mantener la conexion a internet en los puestos de trabajo. este incluye la configuracion de las redes en los equipos, su habilitacion mediante puertos fisicos, la instalacion de routers y la provision de adaptadores wi-fi (usb). ademas de abarcar el mantenimiento y soporte del cableado estructurado, como, por ejemplo, realizando la instalacion o reparacion de cables ethernet danados para restablecer el servicio. internet y redes instalacion, configuracion y continuidad operacional de la conectividad y redes municipales.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #0284c7; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Continuidad operacional del servicio de internet"
+                             data-service-icon="🌐"
+                             data-service-category="🌐 Internet y Redes"
+                             data-service-category-color="#0284c7"
+                             data-service-category-bg="#e0f2fe"
+                             data-service-description="Servicio enfocado en proveer y mantener la conexión a internet en los puestos de trabajo. Este incluye la configuración de las redes en los equipos, su habilitación mediante puertos físicos, la instalación de routers y la provisión de adaptadores Wi-Fi (USB). Además de abarcar el mantenimiento y soporte del cableado estructurado, como, por ejemplo, realizando la instalación o reparación de cables Ethernet dañados para restablecer el servicio.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">🌐</span>
+                                <span class="badge rounded-pill" style="background-color: #e0f2fe; color: #0284c7; border: 1px solid #0284c730; font-size: 0.72rem;">
+                                    🌐 Internet y Redes
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Continuidad operacional del servicio de internet</h5>
+                            <p class="service-card-desc">Servicio enfocado en proveer y mantener la conexión a internet en los puestos de...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #0284c7;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Category: Respaldos y almacenamiento -->
+        <section class="categoria-seccion" id="cat-respaldos-almacenamiento" data-category="respaldos-almacenamiento">
+            <div class="categoria-header">
+                <div class="categoria-icono-circulo" style="background-color: #0d9488; color: #ffffff;">
+                    💾
+                </div>
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h3 class="fw-bold m-0" style="color: #0d9488; font-size: 1.5rem;">Respaldos y almacenamiento</h3>
+                        <span class="badge rounded-pill" style="background-color: #ccfbf1; color: #0d9488; border: 1px solid #0d948840; font-size: 0.8rem;">
+                            1 servicio
+                        </span>
+                    </div>
+                    <p class="text-secondary small m-0 mt-1">Respaldo y recuperación de información y archivos alojados en los puestos de trabajo.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="respaldos-almacenamiento"
+                     data-search="respaldo y restauracion de archivos municipales servicio que consiste en el respaldo y restauracion de informacion alojada en los puestos de trabajo. las labores incluyen la ejecucion de respaldos de datos preventivos en las computadoras y la recuperacion de archivos especificos del funcionario. respaldos y almacenamiento respaldo y recuperacion de informacion y archivos alojados en los puestos de trabajo.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #0d9488; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Respaldo y restauración de archivos municipales"
+                             data-service-icon="💾"
+                             data-service-category="💾 Respaldos y almacenamiento"
+                             data-service-category-color="#0d9488"
+                             data-service-category-bg="#ccfbf1"
+                             data-service-description="Servicio que consiste en el respaldo y restauración de información alojada en los puestos de trabajo. Las labores incluyen la ejecución de respaldos de datos preventivos en las computadoras y la recuperación de archivos específicos del funcionario.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">💾</span>
+                                <span class="badge rounded-pill" style="background-color: #ccfbf1; color: #0d9488; border: 1px solid #0d948830; font-size: 0.72rem;">
+                                    💾 Respaldos y almacenamiento
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Respaldo y restauración de archivos municipales</h5>
+                            <p class="service-card-desc">Servicio que consiste en el respaldo y restauración de información alojada en los puestos...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #0d9488;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Category: Servicio de Impresión -->
+        <section class="categoria-seccion" id="cat-servicio-impresion" data-category="servicio-impresion">
+            <div class="categoria-header">
+                <div class="categoria-icono-circulo" style="background-color: #d97706; color: #ffffff;">
+                    🖨️
+                </div>
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h3 class="fw-bold m-0" style="color: #d97706; font-size: 1.5rem;">Servicio de Impresión</h3>
+                        <span class="badge rounded-pill" style="background-color: #fef3c7; color: #d97706; border: 1px solid #d9770640; font-size: 0.8rem;">
+                            2 servicios
+                        </span>
+                    </div>
+                    <p class="text-secondary small m-0 mt-1">Instalación, soporte y provisión de insumos para equipos de impresión, escáneres y plotters.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="servicio-impresion"
+                     data-search="instalacion de impresoras, escaneres y plotters servicio focalizado en garantizar la operatividad de los equipos de impresion, plotters y escaneres a lo largo de la municipalidad. el servicio abarca la instalacion de equipos, sus controladores y entregar orientacion a los funcionarios sobre el uso de los mismos. servicio de impresion instalacion, soporte y provision de insumos para equipos de impresion, escaneres y plotters.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #d97706; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Instalación de impresoras, escáneres y plotters"
+                             data-service-icon="🖨️"
+                             data-service-category="🖨️ Servicio de Impresión"
+                             data-service-category-color="#d97706"
+                             data-service-category-bg="#fef3c7"
+                             data-service-description="Servicio focalizado en garantizar la operatividad de los equipos de impresión, plotters y escáneres a lo largo de la municipalidad. El servicio abarca la instalación de equipos, sus controladores y entregar orientación a los funcionarios sobre el uso de los mismos.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">🖨️</span>
+                                <span class="badge rounded-pill" style="background-color: #fef3c7; color: #d97706; border: 1px solid #d9770630; font-size: 0.72rem;">
+                                    🖨️ Servicio de Impresión
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Instalación de impresoras, escáneres y plotters</h5>
+                            <p class="service-card-desc">Servicio focalizado en garantizar la operatividad de los equipos de impresión, plotters y escáneres...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #d97706;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="servicio-impresion"
+                     data-search="solicitud de consumibles para equipos de impresion servicio encargado de mantener los equipos de impresion con sus respectivos consumibles operativos y reemplazarlos al momento de terminar su vida util. ademas, se dispone de proveer para los funcionarios con toneres en los casos donde se dificulte realizar el reemplazo de estos, como lo es en dimao y la oficina ubicada en coya. servicio de impresion instalacion, soporte y provision de insumos para equipos de impresion, escaneres y plotters.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #d97706; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Solicitud de consumibles para equipos de impresión"
+                             data-service-icon="🧃"
+                             data-service-category="🖨️ Servicio de Impresión"
+                             data-service-category-color="#d97706"
+                             data-service-category-bg="#fef3c7"
+                             data-service-description="Servicio encargado de mantener los equipos de impresión con sus respectivos consumibles operativos y reemplazarlos al momento de terminar su vida útil. Además, se dispone de proveer para los funcionarios con tóneres en los casos donde se dificulte realizar el reemplazo de estos, como lo es en DIMAO y la oficina ubicada en Coya.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">🧃</span>
+                                <span class="badge rounded-pill" style="background-color: #fef3c7; color: #d97706; border: 1px solid #d9770630; font-size: 0.72rem;">
+                                    🖨️ Servicio de Impresión
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Solicitud de consumibles para equipos de impresión</h5>
+                            <p class="service-card-desc">Servicio encargado de mantener los equipos de impresión con sus respectivos consumibles operativos y...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #d97706;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Category: Sistemas Municipales -->
+        <section class="categoria-seccion" id="cat-sistemas-municipales" data-category="sistemas-municipales">
+            <div class="categoria-header">
+                <div class="categoria-icono-circulo" style="background-color: #4f46e5; color: #ffffff;">
+                    🏛️
+                </div>
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h3 class="fw-bold m-0" style="color: #4f46e5; font-size: 1.5rem;">Sistemas Municipales</h3>
+                        <span class="badge rounded-pill" style="background-color: #e0e7ff; color: #4f46e5; border: 1px solid #4f46e540; font-size: 0.8rem;">
+                            2 servicios
+                        </span>
+                    </div>
+                    <p class="text-secondary small m-0 mt-1">Soporte para plataformas ERP, SISREC, Monitoweb, Reloj Control y sistemas de gestión municipal.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="sistemas-municipales"
+                     data-search="soporte de servicios municipales en plataforma erp soporte para sistema de gestion municipal. en caso de que las funcionalidades de los sistemas no cubran todas las necesidades de gestion de la municipalidad o de cumplimiento de normativa. contempla sistemas municipales como permisos de circulacion, contabilidad gubernamental, derechos de aseo, patentes comerciales, tesoreria municipal, etc. sistemas municipales soporte para plataformas erp, sisrec, monitoweb, reloj control y sistemas de gestion municipal.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #4f46e5; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Soporte de servicios municipales en plataforma ERP"
+                             data-service-icon="⚙️"
+                             data-service-category="🏛️ Sistemas Municipales"
+                             data-service-category-color="#4f46e5"
+                             data-service-category-bg="#e0e7ff"
+                             data-service-description="Soporte para sistema de gestión municipal. En caso de que las funcionalidades de los sistemas no cubran todas las necesidades de gestión de la municipalidad o de cumplimiento de normativa. Contempla Sistemas Municipales como Permisos de Circulación, Contabilidad Gubernamental, Derechos de Aseo, Patentes Comerciales, Tesorería Municipal, etc.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">⚙️</span>
+                                <span class="badge rounded-pill" style="background-color: #e0e7ff; color: #4f46e5; border: 1px solid #4f46e530; font-size: 0.72rem;">
+                                    🏛️ Sistemas Municipales
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Soporte de servicios municipales en plataforma ERP</h5>
+                            <p class="service-card-desc">Soporte para sistema de gestión municipal. En caso de que las funcionalidades de los...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #4f46e5;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="sistemas-municipales"
+                     data-search="soporte especifico de plataformas sisrec, monitoweb, reloj control, etc. servicio que da soporte especifico para las plataformas sisrec, monitoweb, reloj control, etc. consiste en la resolucion de problemas relacionados con dichos sistemas cada vez que se solicite su asistencia. sistemas municipales soporte para plataformas erp, sisrec, monitoweb, reloj control y sistemas de gestion municipal.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #4f46e5; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Soporte específico de plataformas SISREC, Monitoweb, Reloj Control, etc."
+                             data-service-icon="🗃️"
+                             data-service-category="🏛️ Sistemas Municipales"
+                             data-service-category-color="#4f46e5"
+                             data-service-category-bg="#e0e7ff"
+                             data-service-description="Servicio que da soporte específico para las plataformas SISREC, Monitoweb, Reloj Control, etc. Consiste en la resolución de problemas relacionados con dichos sistemas cada vez que se solicite su asistencia.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">🗃️</span>
+                                <span class="badge rounded-pill" style="background-color: #e0e7ff; color: #4f46e5; border: 1px solid #4f46e530; font-size: 0.72rem;">
+                                    🏛️ Sistemas Municipales
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Soporte específico de plataformas SISREC, Monitoweb, Reloj Control, etc.</h5>
+                            <p class="service-card-desc">Servicio que da soporte específico para las plataformas SISREC, Monitoweb, Reloj Control, etc. Consiste...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #4f46e5;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Category: Software y Ofimática -->
+        <section class="categoria-seccion" id="cat-software-ofimatica" data-category="software-ofimatica">
+            <div class="categoria-header">
+                <div class="categoria-icono-circulo" style="background-color: #ea580c; color: #ffffff;">
+                    📦
+                </div>
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h3 class="fw-bold m-0" style="color: #ea580c; font-size: 1.5rem;">Software y Ofimática</h3>
+                        <span class="badge rounded-pill" style="background-color: #ffedd5; color: #ea580c; border: 1px solid #ea580c40; font-size: 0.8rem;">
+                            1 servicio
+                        </span>
+                    </div>
+                    <p class="text-secondary small m-0 mt-1">Instalación, despliegue, actualización y licencias de software ofimático y especializado.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="software-ofimatica"
+                     data-search="solicitud de instalacion y gestion de aplicaciones servicio encargado del despliegue, configuracion, actualizacion y activacion de licencias de aplicaciones de ofimatica (microsoft 365, visores pdf) y software especializado de ingenieria, diseno o gestion (qgis, arcgis, autocad, archicad), segun el perfil de funciones del usuario. software y ofimatica instalacion, despliegue, actualizacion y licencias de software ofimatico y especializado.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #ea580c; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Solicitud de instalación y gestión de aplicaciones"
+                             data-service-icon="🧰"
+                             data-service-category="📦 Software y Ofimática"
+                             data-service-category-color="#ea580c"
+                             data-service-category-bg="#ffedd5"
+                             data-service-description="Servicio encargado del despliegue, configuración, actualización y activación de licencias de aplicaciones de ofimática (Microsoft 365, visores PDF) y software especializado de ingeniería, diseño o gestión (QGis, ArcGIS, AutoCAD, ArchiCAD), según el perfil de funciones del usuario.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">🧰</span>
+                                <span class="badge rounded-pill" style="background-color: #ffedd5; color: #ea580c; border: 1px solid #ea580c30; font-size: 0.72rem;">
+                                    📦 Software y Ofimática
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Solicitud de instalación y gestión de aplicaciones</h5>
+                            <p class="service-card-desc">Servicio encargado del despliegue, configuración, actualización y activación de licencias de aplicaciones de ofimática...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #ea580c;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Category: Telefonía -->
+        <section class="categoria-seccion" id="cat-telefonia" data-category="telefonia">
+            <div class="categoria-header">
+                <div class="categoria-icono-circulo" style="background-color: #8b5cf6; color: #ffffff;">
+                    📞
+                </div>
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <h3 class="fw-bold m-0" style="color: #8b5cf6; font-size: 1.5rem;">Telefonía</h3>
+                        <span class="badge rounded-pill" style="background-color: #ede9fe; color: #8b5cf6; border: 1px solid #8b5cf640; font-size: 0.8rem;">
+                            2 servicios
+                        </span>
+                    </div>
+                    <p class="text-secondary small m-0 mt-1">Instalación, configuración y asignación de teléfonos IP y anexos telefónicos municipales.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="telefonia"
+                     data-search="instalacion y gestion de telefonos ip servicio que se encarga de proveer de telefonos ip a los funcionarios a lo largo del municipio. abarca la instalacion de los dispositivos en los puestos de trabajo y su posterior configuracion. telefonia instalacion, configuracion y asignacion de telefonos ip y anexos telefonicos municipales.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #8b5cf6; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Instalación y gestión de teléfonos IP"
+                             data-service-icon="☎️"
+                             data-service-category="📞 Telefonía"
+                             data-service-category-color="#8b5cf6"
+                             data-service-category-bg="#ede9fe"
+                             data-service-description="Servicio que se encarga de proveer de teléfonos IP a los funcionarios a lo largo del municipio. Abarca la instalación de los dispositivos en los puestos de trabajo y su posterior configuración.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">☎️</span>
+                                <span class="badge rounded-pill" style="background-color: #ede9fe; color: #8b5cf6; border: 1px solid #8b5cf630; font-size: 0.72rem;">
+                                    📞 Telefonía
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Instalación y gestión de teléfonos IP</h5>
+                            <p class="service-card-desc">Servicio que se encarga de proveer de teléfonos IP a los funcionarios a lo...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #8b5cf6;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 d-flex service-column"
+                     data-category="telefonia"
+                     data-search="solcitud y gestion de anexos telefonicos servicio encargado de disponer de anexos telefonicos para los funcionarios de la municipalidad siempre que se realice la instalacion de un dispositivo nuevo, al solicitar un listado de los mismos o al pedir un anexo en especifico. telefonia instalacion, configuracion y asignacion de telefonos ip y anexos telefonicos municipales.">
+                    <article class="card card-servicio-catalogo shadow-sm"
+                             style="border-top: 4px solid #8b5cf6; cursor: pointer;"
+                             role="button"
+                             tabindex="0"
+                             data-service-title="Solcitud y gestión de anexos telefónicos"
+                             data-service-icon="🔢"
+                             data-service-category="📞 Telefonía"
+                             data-service-category-color="#8b5cf6"
+                             data-service-category-bg="#ede9fe"
+                             data-service-description="Servicio encargado de disponer de anexos telefónicos para los funcionarios de la municipalidad siempre que se realice la instalación de un dispositivo nuevo, al solicitar un listado de los mismos o al pedir un anexo en específico.">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="fs-3" aria-hidden="true">🔢</span>
+                                <span class="badge rounded-pill" style="background-color: #ede9fe; color: #8b5cf6; border: 1px solid #8b5cf630; font-size: 0.72rem;">
+                                    📞 Telefonía
+                                </span>
+                            </div>
+                            <h5 class="service-card-title">Solcitud y gestión de anexos telefónicos</h5>
+                            <p class="service-card-desc">Servicio encargado de disponer de anexos telefónicos para los funcionarios de la municipalidad siempre...</p>
+                            <div class="service-card-footer">
+                                <button type="button" class="btn btn-sm w-100 btn-ver-detalle" style="--cat-color: #8b5cf6;">
+                                    Ver detalle
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
         </div>
-
-        <!-- Mensaje cuando no hay resultados de búsqueda -->
-        <div id="sin-resultados" class="container text-center py-5 d-none">
+        <div id="no-results" class="container text-center py-5 d-none">
             <div class="card p-5 border-0 shadow-sm mx-auto" style="max-width: 500px; border-radius: 16px; background-color: rgba(255, 255, 255, 0.95);">
                 <div class="fs-1 mb-3">🔍</div>
                 <h4 class="fw-bold text-dark">No se encontraron servicios</h4>
                 <p class="text-muted">No encontramos ningún servicio que coincida con tu búsqueda. Intenta con otras palabras clave.</p>
                 <div>
-                    <button type="button" id="btn-restablecer-busqueda" class="btn btn-outline-primary px-4 fw-semibold">
+                    <button type="button" id="reset-search-btn" class="btn btn-outline-primary px-4 fw-semibold">
                         Ver todos los servicios
                     </button>
                 </div>
             </div>
         </div>
-
-        <!-- Modal para ver el detalle completo de un servicio -->
-        <div class="modal fade" id="modalServicio" tabindex="-1" aria-labelledby="modalServicioTitulo" aria-hidden="true">
+        <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content shadow border-0 overflow-hidden" style="border-radius: 16px;">
-                    <div class="modal-header text-white" id="modalServicioHeader" style="background-color: #008aad;">
+                    <div class="modal-header text-white" id="serviceModalHeader" style="background-color: #008aad;">
                         <div class="d-flex align-items-center gap-2">
-                            <span id="modalServicioIcono" class="fs-4" aria-hidden="true"></span>
-                            <h5 class="modal-title fw-bold m-0" id="modalServicioTitulo"></h5>
+                            <span id="serviceModalIcon" class="fs-4" aria-hidden="true"></span>
+                            <h5 class="modal-title fw-bold m-0" id="serviceModalTitle"></h5>
                         </div>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body p-4 bg-white">
                         <div class="mb-3">
-                            <span id="modalServicioCategoria" class="badge rounded-pill px-3 py-2 fw-semibold"></span>
+                            <span id="serviceModalCategory" class="badge rounded-pill px-3 py-2 fw-semibold"></span>
                         </div>
                         <h6 class="fw-bold text-dark mb-2">Descripción detallada del servicio</h6>
-                        <p class="text-secondary lh-lg mb-0" id="modalServicioDescripcion" style="font-size: 1.05rem;"></p>
+                        <p class="text-secondary lh-lg mb-0" id="serviceModalDescription" style="font-size: 1.05rem;"></p>
                     </div>
                     <div class="modal-footer bg-light border-top-0 px-4 py-3 d-flex justify-content-between align-items-center">
                         <button type="button" class="btn btn-outline-secondary px-3" data-bs-dismiss="modal">Cerrar</button>
-                        <a href="https://machali.freshdesk.com/support/tickets/new" target="_blank" rel="noopener noreferrer" class="btn btn-danger px-4 fw-bold shadow-sm" id="modalBtnSolicitar">
+                        <a href="https://machali.freshdesk.com/support/tickets/new" target="_blank" rel="noopener noreferrer" class="btn btn-danger px-4 fw-bold shadow-sm" id="serviceModalTicketBtn">
                             👉 Enviar Solicitud
                         </a>
                     </div>
@@ -86,18 +798,13 @@
             </div>
         </div>
     </main>
-
-    <!-- Sugerencias y Footer -->
     <h6 class="text-center my-4 text-muted">
         ¿Tienes alguna sugerencia? <a href="https://forms.gle/BHX9s6LA7ofZktKx9" target="_blank" rel="noopener noreferrer" class="fw-bold text-decoration-none" style="color: #008aad;">Escríbenos aquí</a> 
     </h6>
+    
     <footer id="footer-placeholder" class="py-4 bg-mach-primary text-white"></footer>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script src="js/datosServicios.js"></script>
-    <script src="js/categoriasServicios.js"></script>
-    <script src="js/iconosServicios.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
